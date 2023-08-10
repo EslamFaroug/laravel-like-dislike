@@ -2,10 +2,6 @@
 
 👍 User-like features for Laravel Application.
 
-[![CI](https://github.com/eslamfaroug/laravel-like-dislike/actions/workflows/ci.yml/badge.svg)](https://github.com/eslamfaroug/laravel-like-dislike/actions/workflows/ci.yml)
-
-[![Sponsor me](https://github.com/eslamfaroug/eslamfaroug/blob/master/sponsor-me-button-s.svg?raw=true)](https://github.com/sponsors/eslamfaroug)
-
 ## Installing
 
 ```shell
