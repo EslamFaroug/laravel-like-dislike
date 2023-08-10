@@ -43,7 +43,7 @@ trait Likeable
             'likeable_id',
             config('like.user_foreign_key')
         )
-            ->where("type", Like::$Like)
+            ->where(config('like.likes_table').".type", Like::$Like)
             ->where('likeable_type', $this->getMorphClass());
     }
     public function dislikers(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -54,7 +54,7 @@ trait Likeable
             'likeable_id',
             config('like.user_foreign_key')
         )
-            ->where("type", Like::$DisLike)
+            ->where(config('like.likes_table').".type", Like::$DisLike)
             ->where('likeable_type', $this->getMorphClass());
     }
 }
