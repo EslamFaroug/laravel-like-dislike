@@ -34,7 +34,7 @@ trait Liker
 
     public function likes(): HasMany
     {
-        return $this->hasMany(config('like.like_model'), config('like.user_foreign_key'), $this->getKeyName())->where("type", Like::$Like);
+        return $this->hasMany(config('like.like_model'), config('like.user_foreign_key') , $this->getKeyName())->where(config('like.likes_table').".type", Like::$Like);
     }
 
     /**
@@ -251,6 +251,6 @@ trait Liker
 
     public function dislikes(): HasMany
     {
-        return $this->hasMany(config('like.like_model'), config('like.user_foreign_key'), $this->getKeyName())->where("type", Like::$DisLike);
+        return $this->hasMany(config('like.like_model'), config('like.user_foreign_key'), $this->getKeyName())->where(config('like.likes_table').".type", Like::$DisLike);
     }
 }
