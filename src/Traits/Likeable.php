@@ -26,7 +26,7 @@ trait Likeable
                 return $this->likers->contains($user);
             }
 
-            return $this->likers()->where(\config('like.user_foreign_key'), $user->getKey())->exists();
+            return $this->dislikers()->where(\config('like.user_foreign_key'), $user->getKey())->exists();
         }
 
         return false;

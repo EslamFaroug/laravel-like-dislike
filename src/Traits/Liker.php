@@ -73,6 +73,13 @@ trait Liker
         /* @var \Illuminate\Database\Eloquent\Model $like */
         $like = \app(config('like.like_model'));
 
+        $attr = $attributes;
+        $attr['type'] = Like::$DisLike;
+        $check = $like->where($attr);
+        if ($check->count()) {
+            $check->delete();
+        }
+
         /* @var \EslamFaroug\LaravelLikeDislike\Traits\Likeable|\Illuminate\Database\Eloquent\Model $object */
         return $like->where($attributes)->firstOr(
             function () use ($like, $attributes) {
@@ -134,12 +141,19 @@ trait Liker
         /* @var \Illuminate\Database\Eloquent\Model $like */
         $like = \app(config('like.like_model'));
 
+        $attr = $attributes;
+        $attr['type'] = Like::$Like;
+        $check = $like->where($attr);
+        if ($check->count()) {
+            $check->delete();
+        }
+
         /* @var \EslamFaroug\LaravelLikeDislike\Traits\Likeable|\Illuminate\Database\Eloquent\Model $object */
         return $like->where($attributes)->firstOr(
             function () use ($like, $attributes) {
                 return $like->unguarded(function () use ($like, $attributes) {
-                    if ($this->relationLoaded('likes')) {
-                        $this->unsetRelation('likes');
+                    if ($this->relationLoaded('dislikes')) {
+                        $this->unsetRelation('dislikes');
                     }
 
                     return $like->create($attributes);
