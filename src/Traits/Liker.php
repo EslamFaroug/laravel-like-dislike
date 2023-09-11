@@ -101,7 +101,7 @@ trait Liker
 
     public function hasDisliked(Model $object): bool
     {
-        return ($this->relationLoaded('likes') ? $this->likes : $this->likes())
+        return ($this->relationLoaded('dislikes') ? $this->dislikes : $this->dislikes())
                 ->where('likeable_id', $object->getKey())
                 ->where('likeable_type', $object->getMorphClass())
                 ->where('type', Like::$DisLike)
